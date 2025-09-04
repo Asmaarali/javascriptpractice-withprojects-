@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #222;
+}
+.bulb{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: #444;
+    border-radius: 50%;
+}
+.bulb::before{
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 80px;
+    background: #444;
+    left: 22.5px;
+    top: -50px;
+    border-top: 30px solid #000;
+    border-radius: 10px;
+}
+.bulb span:nth-child(1){
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    /* background-color: red; */
+    box-shadow: 20px 20px 0 10px #444;
+    border-bottom-right-radius: 40px;
+    top: -16px;
+    left: -4px;
+    background: transparent;
+    transform: rotate(341deg);
+}
+.bulb span:nth-child(2){
+    position: absolute;
+    display: block;
+    width: 30px;
+    height: 30px;
+    /* background-color: red; */
+    box-shadow: -20px 20px 0 10px #444;
+    border-bottom-left-radius: 40px;
+    top: -16px;
+    right: -4px; 
+    background: transparent; 
+    transform: rotate(17deg);
+}
+.wire{
+    position: absolute;
+    width: 4px;
+    height: 60vh;
+    background: #000;
+    left: calc(50% - 2px);
+    bottom: 50%;
+}
+.switch{
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(#eee,#ccc,#eee);
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+    border: 3px solid #000;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn{
+    position: relative;
+    width: 30px;
+    height: 50px;
+    background: linear-gradient(#777,#fff,#777);
+    border-radius: 6px;
+    border: 3px solid #000;
+    cursor: pointer;
+}
+.btn::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 85%;
+    background: linear-gradient(#fff,#fff);
+    border-radius: 4px;
+}
+.on .btn::before{
+    top: 15%;
+}
+#audioon,#audiooff{
+    display: none;
+}
+/* --------------------------onbulb--------------------- */
+body.on{
+    background: radial-gradient(#555,#111);
+}
+body.on .bulb::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    width: 120px;
+    height: 120px;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    filter: blur(40px);
+}
+body.on .bulb{
+    background: #fff;
+    box-shadow: 0 0 50px #fff,0 0 100px #fff,0 0 150px #fff,0 0 200px #fff,0 0 250px #fff,0 0 300px #fff,0 0 350px #fff;
+}
+body.on .bulb::before{
+    background: #fff;
+}
+body.on .bulb span:nth-child(1){
+
+    box-shadow: 20px 20px 0 10px #fff;
+
+}
+body.on .bulb span:nth-child(2){
+
+    box-shadow: -20px 20px 0 10px #fff;
+
+}

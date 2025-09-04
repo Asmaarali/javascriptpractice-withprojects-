@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .main{
+        display: flex;
+        align-items: center;
+        /* justify-items:center ; */
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        background-color: aqua;
+        gap: 10px;
+    }
+    .box{
+        width: 300px;
+        background-color: blanchedalmond;
+        height: 300px;
+        border-radius: 40px;
+        transition: 1s ease;
+        display: flex;
+        /* align-items: center; */
+        justify-content: center;
+        justify-items: center;
+    }
+    .card{
+        margin: 20px;
+    }
+    #card-image{
+        width: 150px;
+        /* margin: 20px; */
+    }
+    #info{
+        text-align: center;
+    }
+</style>
+<body>
+    <div class="main">
+        <div class="box" id="container">
+
+        </div>
+
+    </div>
+<!-- 
+    <div class="card">
+        <div class="card-body">
+            <img src="${data.flag}" alt="">
+            <h1 id="title">${data.name}</h1>
+            <h6 id="capital">${data.capital}</h6>
+        </div>
+    </div> -->
+
+
+
+    <!-- https://restcountries.com/v2/name/nepal -->
+    <!-- https://restcountries.com/v3.1/name/pakistan -->
+
+
+<script>
+const container=document.querySelector('#container');
+const request=new XMLHttpRequest();
+request.open('GET',"https://restcountries.com/v2/name/pakistan");
+request.send();
+
+// to get the response 
+
+request.addEventListener('load',function(){
+    // const data=this.responseText
+    // console.log(data);
+    const [data]=JSON.parse(this.responseText);  //* for translate web api json format to javascript
+    console.log(data);
+    const htmldata=`
+        <div class="card">
+            <div class="card-body">
+                <img src="${data.flag}" alt="" id="card-image">
+                <div id="info">
+                                    <h1 id="title">${data.name}</h1>
+            <h6 id="capital">${data.capital}</h6>
+            <p>${data.population}</p>
+            </div>
+
+            </div>
+        </div>
+    `;
+
+    container.insertAdjacentHTML("afterbegin",htmldata);
+
+});
+
+
+
+</script>
+
+</body>
+</html>
